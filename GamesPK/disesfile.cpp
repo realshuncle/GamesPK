@@ -132,79 +132,7 @@ string dices[6][8] =
 		" nnnnnnnnnnnnnn ",
 	},
 };
-//string digpic[10][5] =
-//{
-//	{
-//		"000000",
-//		"00  00",
-//		"00  00",
-//		"00  00",
-//		"000000"
-//	},
-//	{
-//		"1111  ",
-//		"  11  ",
-//		"  11  ",
-//		"  11  ",
-//		"111111"
-//	},
-//	{
-//		"222222",
-//		"    22",
-//		"222222",
-//		"22    ",
-//		"222222"
-//	},
-//	{
-//		"333333",
-//		"    33",
-//		"333333",
-//		"    33",
-//		"333333"
-//	},
-//	{
-//		"44  44",
-//		"44  44",
-//		"444444",
-//		"    44",
-//		"    44"
-//	},
-//	{
-//		"555555",
-//		"55    ",
-//		"555555",
-//		"    55",
-//		"555555"
-//	},
-//	{
-//		"666666",
-//		"66    ",
-//		"666666",
-//		"66  66",
-//		"666666"
-//	},
-//	{
-//		"777777",
-//		"    77",
-//		"    77",
-//		"    77",
-//		"    77"
-//	},
-//	{
-//		"888888",
-//		"88  88",
-//		"888888",
-//		"88  88",
-//		"888888"
-//	},
-//	{
-//		"999999",
-//		"99  99",
-//		"999999",
-//		"    99",
-//		"999999"
-//	},
-//};
+
 extern string digpic[11][5];
 extern bool music;
 extern bool sounds;
@@ -308,7 +236,6 @@ void drawplusnumber(unsigned long long num, unsigned long long sub)
 		if (_kbhit())
 		{
 			cout << "\n  Ваши очки:\n\n";
-			//cout << "";
 			drawnumber(n);
 			return;
 		}
@@ -366,7 +293,6 @@ int dicesanimation(int ochki, int stv, int num)
 	{
 		mciSendString(L"open \"audio/diseshake.mp3\" alias st", NULL, 0, NULL);
 		mciSendString(L"setaudio st volume to 1000", NULL, 0, NULL);
-		//mciSendString(L"set st Speed 1500", NULL, 0, NULL);
 		mciSendString(L"play st from 0", NULL, 0, NULL);
 	}
 
@@ -374,7 +300,6 @@ int dicesanimation(int ochki, int stv, int num)
 	random_device rd;
 	int a, b;
 	mt19937 mersenne(rd());
-	//while (_kbhit()) _getch();
 	for (int i = 50; i > 23; i--)
 	{
 		a = (unsigned int)mersenne() % 6 + 1;
@@ -383,10 +308,6 @@ int dicesanimation(int ochki, int stv, int num)
 		drawdices(a, b);
 		cout << endl << "  ОЧКИ           \t" << ochki << endl << "  СУММА СТАВКИ   \t" << stv << endl << "  СТАВКА НА ЧИСЛО\t" << num;
 		Sleep(2000 / i);
-		/*if (_kbhit() && i != 3)
-		{
-			i = 3;
-		}*/
 	}
 	mciSendString(L"close st", NULL, 0, NULL);
 	Sleep(300);
@@ -406,7 +327,6 @@ void startdices()
 	{
 		mciSendString(L"open \"audio/4.mp3\" alias gfour", NULL, 0, NULL);
 		mciSendString(L"play gfour repeat", NULL, 0, NULL);
-		//mciSendString(L"setaudio gthree volume to 100", NULL, 0, NULL);
 	}
 	while (true)
 	{
@@ -415,19 +335,11 @@ void startdices()
 		cout << namepicd;
 		cout << "\n\n\n";
 		cout << "  Игра \"Кости\"\n" << endl;
-		//string temp = formnumber();
-		//string text = namepic + "\n\n\n\n  МЕНЮ\n\n\t1 - начать игру\n\t2 - помощь\n\t3 - в главное меню\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ";
-		//cout << namepic;
-		//cout << "\n\n\n\n";
-		//cout << "  Игра \"Угадай число\"\n" << endl;
 		cout << "  МЕНЮ\n\n\t1 - начать игру\n\t2 - помощь\n\t3 - в главное меню\n\n";
 		int vibor = read(text, 1, 3);
 	
 		if (vibor == 1)
 		{
-			/*system("cls");
-			cout << startgamepic << endl << endl;
-			Sleep(1200);*/
 			system("cls");
 
 			int ochki = 100;
@@ -455,7 +367,6 @@ void startdices()
 				drawnumber(ochki);
 				cout << endl << endl;
 				cout << "  Рекорд:\t" << name << "\t" << (name == "НЕТ_ДАННЫХ" ? "" : to_string(bestscore)) << endl;
-				//cout << namepicd << "\n\n\n  Игра \"Кости\"\n"
 				cout << "\n  МЕНЮ\n\n\t1 - ввести ставку\n\t2 - поставить всю сумму\n\t3 - поставить полсуммы\n\t4 - поставить четверь суммы\n\t5 - закончить игру\n\n  ";
 				string str = "";
 				char ch;
@@ -472,31 +383,22 @@ void startdices()
 							break;
 						str += ch;
 					}
-					/*while ((ch = _getch()) != '\n')
-					{
-						str += ch;
-					}*/
 					if (str == "выход")
  						throw MyException();
 					try
 					{
 						vibor = stoi(str);
 						if (vibor > 0 && vibor < 6)
-							//return vibor;
 							break;
 					}
 					catch (...)
 					{
-						//cout << msg;
-						//while (_kbhit()) _getch();
 					}
 					system("cls");
 					if (tmp == 40)
 					{
-						//fpr
 						mciSendString(L"stop all", NULL, 0, NULL);
 						mciSendString(L"play \"audio/tnt.mp3\" wait", NULL, 0, NULL);
-						//Sleep(6500);
 						exit(0);
 					}
 					if (tmp > 20)
@@ -504,39 +406,18 @@ void startdices()
 					else if (tmp > 5)
 						cout << "Ну как так-то? Вы не можете попасть по кнопке уже вот столько раз: " << tmp << endl;
 
-					//cout << namepicd + "\n\n\n  Игра \"Кости\"\n\n  Ведите ставку\n";
 					cout << endl;
 					cout << "  Ваши очки:\n\n";
 					drawnumber(ochki);
 					cout << endl << endl;
 					cout << "  Рекорд:\t" << name << "\t" << (name == "НЕТ_ДАННЫХ" ? "" : to_string(bestscore)) << endl;
-					//cout << namepicd << "\n\n\n  Игра \"Кости\"\n"
 					cout << "\n  МЕНЮ\n\n\t1 - ввести ставку\n\t2 - поставить всю сумму\n\t3 - поставить полсуммы\n\t4 - поставить четверь суммы\n\t5 - закончить игру\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ";
 					playsound("negative.mp3", "");
-					//while (_kbhit()) _getch();
 					tmp++;
 					str = "";
 				}
-				/*string text = "\n  Ваши очки:\n\n" + "Рекорд:\t" + name + "\t" + (name == "НЕТ_ДАННЫХ" ? "" : to_string(bestscore)) + "\n  МЕНЮ\n\n\t1 - ввести ставку\n\t2 - поставить всю сумму\n\t3 - поставить полсуммы\n\t4 - поставить четверь суммы\n\t5 - закончить игру\n\n  Похоже вы ввели что - то не то.Попробуйте еще разок.\n  ";*/
 				tmp = 0;
 				int stavka = 1;
-				//cout << "Команды: 1 - ввести ставку, 2 - поставить всю сумму, , , ." << endl;
-				//vibor = read(text, 1, 5);
-				//cin >> vibor;
-				//while (!cin.good() || (vibor != 1 && vibor != 2 && vibor != 3 && vibor != 4 && vibor != 5))
-				//{
-				//	if (tmp == 40)
-				//		exit(0);
-				//	if (tmp > 20)
-				//		cout << "Это Вам не кликкер! До перегрева: " << 40 - tmp << endl;
-				//	else if (tmp > 5)
-				//		cout << "Ну как так-то? Вы не можете попасть по кнопке уже вот столько раз: " << tmp << endl;
-				//	cin.clear();
-				//	cin.ignore((std::numeric_limits<std::streamsize>::max) (), '\n');
-				//	cout << "Не правильно! Команды: 1 - ввести ставку, 2 - поставить всю сумму, 3 - поставить полсуммы, 4 - поставить четверь суммы, 5 - закончить игру" << endl;
-				//	cin >> vibor;
-				//	tmp++;
-				//}
 				if (vibor == 1)
 				{
 					system("cls");
@@ -561,32 +442,23 @@ void startdices()
 								break;
 							str += ch;
 						}
-						/*while ((ch = _getch()) != '\n')
-						{
-							str += ch;
-						}*/
 						if (str == "выход")
 							throw MyException();
 						try
 						{
 							stavka = stoi(str);
 							if (stavka <= ochki && stavka != 0)
-								//return vibor;
 								break;
 						}
 						catch (...)
 						{
 							stavka = -1;
-							//cout << msg;
-							//while (_kbhit()) _getch();
 						}
 						system("cls");
 						if (tmp == 40)
 						{
-							//fpr
 							mciSendString(L"stop all", NULL, 0, NULL);
 							mciSendString(L"play \"audio/tnt.mp3\" wait", NULL, 0, NULL);
-							//Sleep(6500);
 							exit(0);
 						}
 						if (tmp > 20)
@@ -598,7 +470,6 @@ void startdices()
 						drawnumber(ochki);
 						cout << endl << endl;
 						cout << "  Рекорд:\t" << name << "\t" << (name == "НЕТ_ДАННЫХ" ? "" : to_string(bestscore)) << endl;
-						//cout << namepicd + "\n\n\n  Игра \"Кости\"\n\n  Ведите ставку\n";
 						if (stavka > ochki)
 							cout << "  Не хватает очков. Введит меньшую ставку!\n  ";
 						else if (stavka == 0)
@@ -606,30 +477,9 @@ void startdices()
 						else
 							cout << "  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  Введите ставку.\n";
 						playsound("negative.mp3", "");
-						//cout << "\n\n";
-						//while (_kbhit()) _getch();
 						tmp++;
 						str = "";
 					}
-					//string text =Возмож";
-					//cout << "Введите ставку!" << endl;
-
-	/*				cin >> stavka;
-					tmp = 0;
-					while (!cin.good() || stavka > ochki || stavka == 0)
-					{
-						if (tmp == 40)
-							exit(0);
-						if (tmp > 20)
-							cout << "Это Вам не кликкер! До перегрева: " << 40 - tmp << endl;
-						else if (tmp > 5)
-							cout << "Ну как так-то? Вы не можете попасть по кнопке уже вот столько раз: " << tmp << endl;
-						cin.clear();
-						cin.ignore((std::numeric_limits<std::streamsize>::max) (), '\n');
-						
-						cin >> stavka;
-						tmp++;
-					}*/
 				}
 				else if (vibor == 2)
 					stavka = ochki;
@@ -650,11 +500,8 @@ void startdices()
 				drawnumber(ochki);
 				cout << endl << endl;
 				cout << "  Рекорд:\t" << name << "\t" << (name == "НЕТ_ДАННЫХ" ? "" : to_string(bestscore)) << endl;
-				//cout << namepicd << "\n\n\n  Игра \"Кости\"\n"
 				cout << "\n  Введите любое число в диапазоне от 2 до 12!\n\n  ";
 				str = "";
-				//char ch;
-				//int vibor;
 				tmp = 0;
 				cout << "  ";
 				while (_kbhit()) _getch();
@@ -667,70 +514,38 @@ void startdices()
 							break;
 						str += ch;
 					}
-					/*while ((ch = _getch()) != '\n')
-					{
-						str += ch;
-					}*/
 					if (str == "выход")
 						throw MyException();
 					try
 					{
 					num = stoi(str);
 						if (num > 1 && num < 13)
-							//return vibor;
 							break;
 					}
 					catch (...)
 					{
-						//cout << msg;
-						//while (_kbhit()) _getch();
 					}
 					system("cls");
 					if (tmp == 40)
 					{
-						//fpr
 						mciSendString(L"stop all", NULL, 0, NULL);
 						mciSendString(L"play \"audio/tnt.mp3\" wait", NULL, 0, NULL);
-						//Sleep(6500);
 						exit(0);
 					}
 					if (tmp > 20)
 						cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
 					else if (tmp > 5)
 						cout << "Ну как так-то? Вы не можете попасть по кнопке уже вот столько раз: " << tmp << endl;
-
-					//cout << namepicd + "\n\n\n  Игра \"Кости\"\n\n  Ведите ставку\n";
 					cout << endl;
 					cout << "  Ваши очки:\n\n";
 					drawnumber(ochki);
 					cout << endl << endl;
 					cout << "  Рекорд:\t" << name << "\t" << (name == "НЕТ_ДАННЫХ" ? "" : to_string(bestscore)) << endl;
-					//cout << namepicd << "\n\n\n  Игра \"Кости\"\n"
 					cout << "\n  Введите любое число в диапазоне от 2 до 12!\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ";
 					playsound("negative.mp3", "");
-					//while (_kbhit()) _getch();
 					tmp++;
 					str = "";
 				}
-				//cout << "Введите любое число в диапазоне от 2 до 12!" << endl;
-				//int num;
-				//cin >> num;
-				//tmp = 0;
-				//while (!cin.good() || num < 2 || num > 12)
-				//{
-				//	if (tmp == 40)
-				//		exit(0);
-				//	if (tmp > 20)
-				//		cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
-				//	else if (tmp > 5)
-				//		cout << "Ну как так-то? Вы не можете попасть по кнопке уже вот столько раз: " << tmp << endl;
-
-				//	cin.clear();
-				//	cin.ignore((std::numeric_limits<std::streamsize>::max) (), '\n');
-				//	cout << "Не правильно! Введите правильную команду! Введите любое число в диапазоне от 2 до 12!" << endl;
-				//	cin >> num;
-				//	tmp++;
-				//}
 				cout << "\n  Хорошо. Бросаем кубики!" << endl;
 				Sleep(1000);
 				int count = dicesanimation(ochki, stavka, num);
@@ -741,27 +556,14 @@ void startdices()
 				{
 					system("cls");
 					playsound("windices.mp3", "gfour");
-					/*if (music)
-						mciSendString(L"setaudio gfour volume to 10", NULL, 0, NULL);*/
 					if (music)
 						mciSendString(L"pause gfour", NULL, 0, NULL);
 					if(music)
 					{
 						mciSendString(L"open \"audio/klubnichka.mp3\" alias st", NULL, 0, NULL);
 						mciSendString(L"setaudio st volume to 1000", NULL, 0, NULL);
-						//mciSendString(L"set st Speed 1500", NULL, 0, NULL);
 						mciSendString(L"play st from 0", NULL, 0, NULL);
 					}
-					
-					//if(sounds)
-					//{
-					//	mciSendString(L"open \"audio/windices.mp3\" alias st", NULL, 0, NULL);
-					//	mciSendString(L"setaudio st volume to 1000", NULL, 0, NULL);
-					//	//mciSendString(L"set st Speed 1500", NULL, 0, NULL);
-					//	mciSendString(L"play st from 0", NULL, 0, NULL);
-					//}
-				/*	if (music)
-						mciSendString(L"pause gfour", NULL, 0, NULL);*/
 					
 					for (int i = 0; i < 10; i++)
 					{
@@ -773,7 +575,6 @@ void startdices()
 					cout << jackpot;
 					cout << endl << endl;
 					cout << "  Число на которое Вы ставили и число на кубиках СОВПАЛИ!\n  Поздравляем!\n  Вы сорвали джекпот!\n  Вы получаете в ЧЕТЫРЕ раза больше того, что ставили!\n  ";
-					//cout << "  "; 
 					if (music)
 						mciSendString(L"setaudio gfour volume to 1000", NULL, 0, NULL); 
 					system("pause");
@@ -796,8 +597,6 @@ void startdices()
 					drawnumber(ochki);
 					cout << endl << endl;
 					cout << "  Рекорд:\t" << name << "\t" << (name == "НЕТ_ДАННЫХ" ? "" : to_string(bestscore)) << endl;
-					//system("cls");
-					//cout << winpic << endl << endl;
 					
 					cout << "\n  ВЫИГРЫШ.\n";
 					cout << "  Вы поставили на число " << num << endl;
@@ -817,12 +616,8 @@ void startdices()
 					drawnumber(ochki);
 					cout << endl << endl;
 					cout << "  Рекорд:\t" << name << "\t" << (name == "НЕТ_ДАННЫХ" ? "" : to_string(bestscore)) << endl;
-					//system("cls");
-					//cout << winpic << endl << endl;
 
 					cout << "\n  ПРОИГРЫШ.\n";
-					//system("cls");
-					//cout << losepic << endl << endl;
 					cout << "\tВы поставили на число " << num << endl;
 					cout << "\tНа кубиках выпало число " << count << endl;
 					cout << "\tВаше число " << (num < 7 ? "меньше" : num > 7 ? "больше" : "равно") << " 7" << endl;
@@ -866,7 +661,6 @@ void startdices()
 		else if (vibor == 2)
 		{
 			system("cls");
-			//string temp = formnumber();
 			cout << namepicd;
 			cout << "\n\n\n";
 			cout << "  Игра \"Кости\"\n" << endl;

@@ -101,161 +101,6 @@ string digpic[11][5] =
 };
 int read(string msg, int b, int e);
 string readstr(string msg);
-//int read(string msg, int b, int e)
-//{
-//	string str = "";
-//	char ch;
-//	int vibor;
-//
-//	//cin >> vibor;
-//	int tmp = 0;
-//	cout << "  ";
-//	while (_kbhit()) _getch();
-//	while (true)
-//	{
-//
-//		while (cin.get(ch))
-//		{
-//			if (ch == '\n')
-//				break;
-//			str += ch;
-//		}
-//		/*while ((ch = _getch()) != '\n')
-//		{
-//			str += ch;
-//		}*/
-//		try
-//		{
-//			vibor = stoi(str);
-//			if (vibor >= b && vibor <= e)
-//				return vibor;
-//		}
-//		catch (...)
-//		{
-//			//cout << msg;
-//			//while (_kbhit()) _getch();
-//		}
-//		system("cls");
-//		if (tmp == 40)
-//		{
-//			//fpr
-//			mciSendString(L"stop all", NULL, 0, NULL);
-//			mciSendString(L"play \"audio/tnt.mp3\"", NULL, 0, NULL);
-//			Sleep(6500);
-//			exit(0);
-//		}
-//		if (tmp > 20)
-//			cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
-//		else if (tmp > 5)
-//			cout << "Ну как так-то? Вы не можете попасть по кнопке уже вот столько раз: " << tmp << endl;
-//		cout << msg;
-//		//while (_kbhit()) _getch();
-//		tmp++;
-//		str = "";
-//	}
-//	//while (/*!cin.good()*/|| vibor < b || vibor > e)
-//	//{
-//	//    system("cls");
-//	//    if (tmp == 40)
-//	//        exit(0);
-//	//    if (tmp > 20)
-//	//        cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
-//	//    else if (tmp > 5)
-//	//        cout << "Ну как так-то? Вы не можете попасть по кнопке уже вот столько раз: " << tmp << endl;
-//	//    cin.clear();
-//	//    cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-//	//    cout << msg;
-//	//    while (_kbhit()) _getch();
-//	//    cin >> vibor;
-//	//    tmp++;
-//	//}
-//	//return vibor;
-//}
-//string digpic[11][5] =
-//{
-//	{
-//		"  _|_|  ",
-//		"_|    _|",
-//		"_|    _|",
-//		"_|    _|",
-//		"  _|_|  ",
-//	},
-//	{
-//		"   _|   ",
-//		" _|_|   ",
-//		"   _|   ",
-//		"   _|   ",
-//		" _|_|_| ",
-//	},
-//	{
-//		"  _|_|  ",
-//		"_|    _|",
-//		"    _|  ",
-//		"  _|    ",
-//		"_|_|_|_|",
-//	},
-//	{
-//		"_|_|_|  ",
-//		"      _|",
-//		"  _|_|  ",
-//		"      _|",
-//		"_|_|_|  ",
-//	},
-//	{
-//		"_|  _|  ",
-//		"_|  _|  ",
-//		"_|_|_|_|",
-//		"    _|  ",
-//		"    _|  ",
-//	},
-//	{
-//		"_|_|_|_|",
-//		"_|      ",
-//		"_|_|_|  ",
-//		"      _|",
-//		"_|_|_|  ",
-//
-//	},
-//	{
-//		"  _|_|_|",
-//		"_|      ",
-//		"_|_|_|  ",
-//		"_|    _|",
-//		"  _|_|  ",
-//
-//	},
-//	{
-//		"_|_|_|_|",
-//		"      _|",
-//		"     _| ",
-//		"   _|   ",
-//		"  _|    ",
-//
-//	},
-//	{
-//		"  _|_|  ",
-//		"_|    _|",
-//		"  _|_|  ",
-//		"_|    _|",
-//		"  _|_|  ",
-//	},
-//	{
-//		"  _|_|  ",
-//		"_|    _|",
-//		"  _|_|_|",
-//		"      _|",
-//		"_|_|_|  ",
-//
-//	},
-//		{
-//		" _|_|   ",
-//		"     _| ",
-//		" _|_|   ",
-//		"        ",
-//		" _|     ",
-//
-//	},
-//};
 string formnumber()
 {
 	string result;
@@ -264,17 +109,13 @@ string formnumber()
 	unsigned int num = (unsigned int)mersenne() % 1000;
 	vector<int>digits;
 	unsigned long long x = num;
-	//int size = 1;
 
 	unsigned long long const maxx = 10000000000000000000;
-	//unsigned long long trtr = 1;
 	if (num > 9)
 		while (x > 0)
 		{
 			digits.push_back(x % 10);
 			x = x / 10;
-			//size++;
-			//trtr *= 10;
 		}
 	else
 		digits.push_back(x % 10);
@@ -282,14 +123,11 @@ string formnumber()
 	for (int i = 0; i < 5; i++)
 	{
 		result += "  ";
-		//cout << "  ";
 		for (int j = digits.size() - 1; j >= 0; j--)
 		{
 			result += digpic[digits[j]][i] + " ";
-			//cout << digpic[digits[j]][i] << " ";
 		}
 		result += "  " + digpic[10][i] + "\n";
-		//cout << digpic[digits[10]][i] << endl;
 	}
 	result += "\n";
 	return result;
@@ -305,15 +143,9 @@ void PVI1()
 	cout << temp;
 	cout << "\n\n\n";
 	cout << "  Игра \"Угадай число\"\n" << endl;
-	//cout << "  ВЫБЕРИТЕ РЕЖИМ ИГРЫ\n\n\t1 - с компьютером\n\t2 - вдвоем с другом (или не другом)\n\t3 - назад\n\n";
-	//int vibor = read(text, 1, 3);
-	//srand(time(0)); // автоматическая рандомизация
 	cout << "  Сейчас случайным образом будет выбрано, кто будет загадывать число. \n" << endl;
 	Sleep(1000);
-	//_getch();
 	int c = (unsigned int)mersenne() % 2;
-	//int comp = 1 + rand() % 6;
-	//int player = 1 + rand() % 6;
 	int number;
 	if (c == 0)
 	{
@@ -321,7 +153,6 @@ void PVI1()
 		number = 1 + (unsigned int)mersenne() % 1000;
 		system("pause");
 		system("cls");
-		//system("cls");
 		cout << "\n  Компьютер загадал число от 1 до 1000." << endl;
 		int popit = 10;
 		int temp;
@@ -331,28 +162,11 @@ void PVI1()
 			system("cls");
 			cout << "\n" + voprosi << "\n  Введите число, для которого Вы хотите узнать больше ли оно загаданного или нет.\n  Если вы уже знаете число и хотите ввести ответ, то введите 0." << endl;
 			temp = read("\n" + voprosi + "\n  Введите число, для которого Вы хотите узнать больше ли оно загаданного или нет.\n  Если вы уже знаете число и хотите ввести ответ, то введите 0.\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ", 0, 1000);
-			/*while (!cin.good() || temp < 0 || temp > 1000)
-			{
-				cin.clear();
-				cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-				cout << "Не правильно! Введите натуральное число от 1 до 1000! ";
-				cout << "Введите число, для которого вы хотите получить ответ на вопрос. ВОПРОС: \"Верно ли, что задуманное число больше, чем то, что вы ввели\". Если вы уже знаете число и хотите ввести ответ, то введите 0." << endl;
-				cin >> temp;
-			}*/
 			if (temp == 0)
 			{
 				system("cls");
 				cout << "\n" << voprosi << "\n  Введите загаданное число." << endl;
-				//cin >> temp;
 				temp = read("\n" + voprosi + "\n  Введите загаданное число. \n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ", 1, 1000);
-				/*while (!cin.good() || temp < 0 || temp > 1000)
-				{
-					cin.clear();
-					cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-					cout << "Не правильно! Введите натуральное число от 1 до 1000! ";
-					cout << "Введите загаданное число." << endl;
-					cin >> temp;
-				}*/
 				if (temp == number)
 				{
 					cout << "\n  Вы выиграли! (Количество ходов: " << count << ").\n  ";
@@ -361,24 +175,7 @@ void PVI1()
 				else
 				{
 					cout << "\n  УВЫ. Вы проиграли :( Число было: " << number << "\n  ";
-					//Sleep(400);
-					playsound("sadtrom.mp3", "gone");
-					//if (sounds)
-					//{
-					//	mciSendString(L"open \"audio/sadtrom.mp3\" alias st", NULL, 0, NULL);	
-					//	Sleep(500);
-					//	while (_kbhit()) _getch();
-					//	if (music)
-					//		mciSendString(L"setaudio gone volume to 400", NULL, 0, NULL);
-					//	mciSendString(L"setaudio st volume to 700", NULL, 0, NULL);
-					//	//mciSendString(L"set st Speed 1500", NULL, 0, NULL);
-					//	mciSendString(L"play st wait", NULL, 0, NULL);
-					//	//mciSendString(L"play \"audio/sadtrom.mp3\" wait", NULL, 0, NULL);
-					//	if (music)
-					//		mciSendString(L"setaudio gone volume to 1000", NULL, 0, NULL);
-					//	while (_kbhit()) _getch();
-					//}
-						
+					playsound("sadtrom.mp3", "gone");					
 				}
 				break;
 			}
@@ -401,16 +198,7 @@ void PVI1()
 		{
 			system("cls");
 			cout << "\n" + voprosi << "\n  Введите загаданное число." << endl;
-			//cin >> temp;
 			temp = read("\n" + voprosi + "\n  Введите загаданное число. \n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n", 1, 1000);
-			/*while (!cin.good() || temp < 0 || temp > 1000)
-			{
-				cin.clear();
-				cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-				cout << "Не правильно! Введите натуральное число от 1 до 1000! ";
-				cout << "Введите загаданное число." << endl;
-				cin >> temp;
-			}*/
 			if (temp == number)
 			{
 				cout << "\n  Вы выиграли! (Количество ходов: " << count << ").\n  ";
@@ -433,15 +221,6 @@ void PVI1()
 		int vib;
 		cout << "\n  Загадайте число от 1 до 1000 и введите его.\n";
 		number = read("\n  Загадайте число от 1 до 1000 и введите его.\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ", 1, 1000);
-		//cin >> number;
-		/*while (!cin.good() && number < 0 && number > 1000)
-		{
-			cin.clear();
-			cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-			cout << "Не правильно! Введите натуральное число от 1 до 1000!";
-			cout << "Введите загаданное число." << endl;
-			cin >> number;
-		}*/
 		int popit = 10;
 		int dv = 512;
 		int num = dv;
@@ -451,18 +230,7 @@ void PVI1()
 
 			cout << "  Вопрос номер " << ++count << ": Ваше число больше " << num << "? " << "Введите: 1 - да, 2 - нет" << endl;
 			vib = read(voprosi + "\n  Вопрос номер " + to_string(count) + ": Ваше число больше " + to_string(num) + "?\n" + "  Введите: 1 - да, 2 - нет\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ", 1, 2);
-			//cin >> vib;
 			voprosi += "  Вопрос номер " + to_string(count) + ": Ваше число больше " + to_string(num) + "? ";
-			/*while (!cin.good() || vib < 0 || vib > 2)
-			{
-				cin.clear();
-				cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-				cout << "Не правильно! Вы ввели не то, что надо. ";
-				cout << "Введите 1 - да, 2 - нет" << endl;
-				cin >> vib;
-			}*/
-			/*if (dv % 2 != 0)
-				dv++;*/
 			dv = dv / 2;
 			switch (vib)
 			{
@@ -525,7 +293,6 @@ void PVP1()
 	cout << "  Игра \"Угадай число\"\n" << endl;
 	cout << "  Перед тем как начать игру, небоходимо выбрать, кто будет загадывать число.\n  Для этого вам нужно ввести ваши имена." << endl;
 	string name1, name2;
-	//Sleep(1000);
 	cout << endl << "  Первый игрок введите свое имя.\t";
 	while (_kbhit()) _getch();
 	name1 = readstr(tempi + "\n\n\n" + "  Игра \"Угадай число\"\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n\n  Первый игрок введите свое имя.\t");
@@ -564,8 +331,6 @@ void PVP1()
 		cout << "\n  Игрок " << (!temp ? name1 : name2) << " должен отвернуться.\n\n  ";
 		system("pause");
 		system("cls");
-
-		//cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
 		cout << "\n  Игрок " << (temp ? name1 : name2) << " загадайте число от 1 до 1000 и введите его." << endl;
 		number = read("\n  Игрок " + (temp ? name1 : name2) + " загадайте число от 1 до 1000 и введите его.\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ", 1, 1000);
 		system("cls");
@@ -578,28 +343,12 @@ void PVP1()
 			system("cls");
 			cout << "\n" + voprosi << "\n  Введите число, для которого Вы хотите узнать больше ли оно загаданного или нет.\n  Если вы уже знаете число и хотите ввести ответ, то введите 0." << endl;
 			temp = read("\n" + voprosi + "\n  Введите число, для которого Вы хотите узнать больше ли оно загаданного или нет.\n  Если вы уже знаете число и хотите ввести ответ, то введите 0.\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ", 0, 1000);
-			/*while (!cin.good() || temp < 0 || temp > 1000)
-			{
-				cin.clear();
-				cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-				cout << "Не правильно! Введите натуральное число от 1 до 1000! ";
-				cout << "Введите число, для которого вы хотите получить ответ на вопрос. ВОПРОС: \"Верно ли, что задуманное число больше, чем то, что вы ввели\". Если вы уже знаете число и хотите ввести ответ, то введите 0." << endl;
-				cin >> temp;
-			}*/
+
 			if (temp == 0)
 			{
 				system("cls");
 				cout << "\n" << voprosi << "\n  Введите загаданное число." << endl;
-				//cin >> temp;
 				temp = read("\n" + voprosi + "\n  Введите загаданное число. \n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ", 1, 1000);
-				/*while (!cin.good() || temp < 0 || temp > 1000)
-				{
-					cin.clear();
-					cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-					cout << "Не правильно! Введите натуральное число от 1 до 1000! ";
-					cout << "Введите загаданное число." << endl;
-					cin >> temp;
-				}*/
 				if (temp == number)
 				{
 					cout << "\n  Игрок " << (temp ? name1 : name2) << ", Вы выиграли!(Количество ходов: " << count << ").\n  ";
@@ -632,16 +381,7 @@ void PVP1()
 		{
 			system("cls");
 			cout << "\n" + voprosi << "\n  Введите загаданное число." << endl;
-			//cin >> temp;
 			temp = read("\n" + voprosi + "\n  Введите загаданное число. \n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n", 1, 1000);
-			/*while (!cin.good() || temp < 0 || temp > 1000)
-			{
-				cin.clear();
-				cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-				cout << "Не правильно! Введите натуральное число от 1 до 1000! ";
-				cout << "Введите загаданное число." << endl;
-				cin >> temp;
-			}*/
 			if (temp == number)
 			{
 				cout << "\n  Игрок " << (temp ? name1 : name2) << ", Вы выиграли! (Количество ходов: " << count << ").\n  ";
@@ -649,12 +389,10 @@ void PVP1()
 			}
 			else
 			{
-				//mciSendString(L"stop gone", NULL, 0, NULL);
 				cout << "\n  Игрок " << (temp ? name1 : name2) << ", Вы проиграли :( Число было: " << number << "\n  ";
 				playsound("sadtrom.mp3", "gone");
 			}
 		}
-		//system("pause");
 		system("cls");
 		tempi = formnumber();
 		cout << tempi;
@@ -673,11 +411,7 @@ void startgameygchislo()
 	{
 		mciSendString(L"open \"audio/1.mp3\" alias gone", NULL, 0, NULL);
 		mciSendString(L"play gone repeat", NULL, 0, NULL);
-		//mciSendString(L"setaudio gone volume to 100", NULL, 0, NULL);
 	}
-	/*SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-	setlocale(LC_ALL, "Russian");*/
 
 	while (true)
 	{
@@ -726,5 +460,4 @@ void startgameygchislo()
 			break;
 	}
 	mciSendString(L"close gone", NULL, 0, NULL);
-	//system("pause");
 }

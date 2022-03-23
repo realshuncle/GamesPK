@@ -89,7 +89,6 @@ R"(
    /ooooooooooooooooooooooo/ /
   /C=_____________________/_/     
 )";
-//HANDLE  hConsole;
 int checkttt(set<int>& player, set<int>& comp)
 {
 	set<int> winpos[8] =
@@ -779,17 +778,14 @@ void drawttt(set<int>& player, set<int>& comp, set<int> winthree = {})
 		cout << "\n";
 		SetConsoleTextAttribute(hConsole, 14);
 	}
-	//cout << endl;
 }
 
 void PVI4()
 {
 	system("cls");
-	//int count = 0;
 	int i = 25;
 	random_device rd;
 	mt19937 mersenne(rd());
-	//string temp = formnumber();
 	set<int> winpos[8] =
 	{
 		{2, 4, 9},
@@ -851,7 +847,6 @@ void PVI4()
 				cout << endl;
 				hh ? drawttt(comp, player, tempp) : drawttt(player, comp, tempp);
 				cout << "\n  ПРИМИТЕ МОИ ПОЗДРАВЛЕНИЯ! ВЫ ВЫИГРАЛИ!\n  ";
-				//cout << endl;
 				playsound("win.mp3", "geight");
 				system("pause");
 				flag = true;
@@ -863,72 +858,12 @@ void PVI4()
 				cout << endl;
 				hh ? drawttt(comp, player, tempc) : drawttt(player, comp, tempc);
 				cout << "\n  Я ПОБЕДИЛ! НУ А ВЫ ПРОИГРАЛИ :(\n  ";
-				//cout << endl;
 				playsound("sadtrom.mp3", "geight");
 				system("pause");
 				flag = true;
 				break;
 			}
 		}
-		//if (player.size() + comp.size() == 9)
-		//{
-		//	system("cls");
-		//	cout << "\n  НИЧЬЯ\n\n  Ваши фишки: ";
-		//	for (auto i : player)
-		//		cout << i << " ";
-		//	cout << "\n  Мои фишки: ";
-		//	for (auto i : comp)
-		//		cout << i << " ";
-		//	cout << "\n\n  Никто не смог собрать у себя три фишки с суммой 15";
-		//	cout << "\n  ";
-		//	system("pause");
-		//	break;
-		//}
-		//for (int i = 0; i < 8; i++)
-		//{
-		//	tempp.clear();
-		//	tempc.clear();
-		//	set_intersection(player.begin(), player.end(), winpos[i].begin(), winpos[i].end(), inserter(tempp, tempp.begin()));
-		//	set_intersection(comp.begin(), comp.end(), winpos[i].begin(), winpos[i].end(), inserter(tempc, tempc.begin()));
-		//	if (tempp.size() == 3)
-		//	{
-		//		system("cls");
-		//		cout << "\n  ПРИМИТЕ МОИ ПОЗДРАВЛЕНИЯ! ВЫ ВЫИГРАЛИ!";
-		//		cout << "\n\n  Ваши фишки: ";
-		//		for (auto i : player)
-		//			cout << i << " ";
-		//		cout << "\n  Мои фишки: ";
-		//		for (auto i : comp)
-		//			cout << i << " ";
-		//		cout << "\n\n  Вы собрали у себя три фишки с суммой 15: ";
-		//		for (auto i : tempp)
-		//			cout << i << " ";
-		//		playsound("win.mp3", "geight");
-		//		cout << "\n  ";
-		//		system("pause");
-		//		flag = true;
-		//		break;
-		//	}
-		//	if (tempc.size() == 3)
-		//	{
-		//		system("cls");
-		//		cout << "\n  Я ПОБЕДИЛ! НУ А ВЫ ПРОИГРАЛИ :(";
-		//		cout << "\n\n  Ваши фишки: ";
-		//		for (auto i : player)
-		//			cout << i << " ";
-		//		cout << "\n  Мои фишки: ";
-		//		for (auto i : comp)
-		//			cout << i << " ";
-		//		cout << "\n\n  Я собрал у себя три фишки с суммой 15: ";
-		//		for (auto i : tempc)
-		//			cout << i << " ";
-		//		playsound("sadtrom.mp3", "geight");
-		//		cout << "\n  ";
-		//		system("pause");
-		//		flag = true;
-		//		break;
-		//	}
-		//}
 
 		if (flag)
 			break;
@@ -940,10 +875,8 @@ void PVI4()
 			cout << endl;
 			Sleep(1000);
 			fishka = playgttt(player, comp);
-			//cout << "  Я возьму фишку с номером " << fishka << "\n  ";
 			fishkibili.erase(fishka);
 			hod = false;
-			//system("pause");
 			continue;
 		}
 		system("cls");
@@ -1002,10 +935,6 @@ void PVI4()
 			cout << "  Поля нумеруются следующим образом:" << endl;
 			cout << polepic;
 			cout << endl;
-			//drawmatches(i);
-			// cout<< endl << endl;
-			//cout << "  ОСТАЛОСЬ СПИЧЕК (если лень считать): " << i << endl;
-			//cout << "  Игрок " << (temp ? name1 : name2) << ", Ваша очередь брать спички: 1 - взять одну, 2 - взять две, 4 - взять четыре.\n";
 			if (vibor > 0 && vibor < 10 && fishkibili.find(positionsx[vibor - 1]) == fishkibili.end())
 			{
 				cout << "  Это поле уже занято. Выберите другое.\n";
@@ -1015,23 +944,6 @@ void PVI4()
 			str = "";
 			playsound("negative.mp3", "");
 		}
-		//while (_kbhit()) _getch();
-		//cin >> vibor;
-		//int tmp = 0;
-		//while (!cin.good() || (vibor < 1 && vibor > 9) || fishkibili.find(vibor) == fishkibili.end())
-		//{
-		//	if (vibor > 0 && vibor < 10 && fishkibili.find(vibor) == fishkibili.end())
-		//	{
-		//		cout << "Эту фишку уже взяли. Выберите другую." << endl;
-		//	}
-		//	else
-		//	{
-		//		if (tmp == 40)
-		//			exit(0);
-		//		if (tmp > 20)
-		//			cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
-		//		else if (tmp > 5)
-		//			cout << "Ну как так-то? Ты не можешь попасть по кнопке уже вот столько раз: " << tmp << endl;
 		fishkibili.erase(positionsx[vibor - 1]);
 		player.insert(positionsx[vibor - 1]);
 		cout << "  Хорошо." << endl;
@@ -1050,7 +962,6 @@ void PVP4()
 	cout << "  Игра \"Крестики-нолики\"\n" << endl;
 	cout << "  Перед тем как начать игру, небоходимо выбрать, кто будет загадывать число.\n  Для этого вам нужно ввести ваши имена." << endl;
 	string name1, name2;
-	//Sleep(1000);
 	cout << endl << "  Первый игрок введите свое имя.\t";
 	while (_kbhit()) _getch();
 	name1 = readstr(namepictt + "\n\n\n\n  Игра \"Крестики-нолики\"\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n\n  Первый игрок введите свое имя.\t");
@@ -1080,7 +991,6 @@ void PVP4()
 		};
 		set<int> fishkibili = { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, player, comp;
 		bool hod = false;
-		//int i = 25;
 		system("cls");
 		cout << namepictt;
 		cout << "\n\n\n\n";
@@ -1127,7 +1037,6 @@ void PVP4()
 					cout << endl;
 					!temp ? drawttt(comp, player, tempp) : drawttt(player, comp, tempp);
 					cout << "\n  ПРИМИТЕ МОИ ПОЗДРАВЛЕНИЯ ИГРОК " << name1 << "! ВЫ ВЫИГРАЛИ!\n  ";
-					//cout << endl;
 					playsound("win.mp3", "geight");
 					system("pause");
 					flag = true;
@@ -1139,89 +1048,16 @@ void PVP4()
 					cout << endl;
 					!temp ? drawttt(comp, player, tempc) : drawttt(player, comp, tempc);
 					cout << "\n  ПРИМИТЕ МОИ ПОЗДРАВЛЕНИЯ ИГРОК " << name2 << "! ВЫ ВЫИГРАЛИ!\n  ";
-					//cout << endl;
 					playsound("win.mp3", "geight");
 					system("pause");
 					flag = true;
 					break;
 				}
 			}
-			//if (player.size() + comp.size() == 9)
-			//{
-			//	system("cls");
-			//	cout << "\n  НИЧЬЯ\n\n  Ваши фишки: ";
-			//	for (auto i : player)
-			//		cout << i << " ";
-			//	cout << "\n  Мои фишки: ";
-			//	for (auto i : comp)
-			//		cout << i << " ";
-			//	cout << "\n\n  Никто не смог собрать у себя три фишки с суммой 15";
-			//	cout << "\n  ";
-			//	system("pause");
-			//	break;
-			//}
-			//for (int i = 0; i < 8; i++)
-			//{
-			//	tempp.clear();
-			//	tempc.clear();
-			//	set_intersection(player.begin(), player.end(), winpos[i].begin(), winpos[i].end(), inserter(tempp, tempp.begin()));
-			//	set_intersection(comp.begin(), comp.end(), winpos[i].begin(), winpos[i].end(), inserter(tempc, tempc.begin()));
-			//	if (tempp.size() == 3)
-			//	{
-			//		system("cls");
-			//		cout << "\n  ПРИМИТЕ МОИ ПОЗДРАВЛЕНИЯ! ВЫ ВЫИГРАЛИ!";
-			//		cout << "\n\n  Ваши фишки: ";
-			//		for (auto i : player)
-			//			cout << i << " ";
-			//		cout << "\n  Мои фишки: ";
-			//		for (auto i : comp)
-			//			cout << i << " ";
-			//		cout << "\n\n  Вы собрали у себя три фишки с суммой 15: ";
-			//		for (auto i : tempp)
-			//			cout << i << " ";
-			//		playsound("win.mp3", "geight");
-			//		cout << "\n  ";
-			//		system("pause");
-			//		flag = true;
-			//		break;
-			//	}
-			//	if (tempc.size() == 3)
-			//	{
-			//		system("cls");
-			//		cout << "\n  Я ПОБЕДИЛ! НУ А ВЫ ПРОИГРАЛИ :(";
-			//		cout << "\n\n  Ваши фишки: ";
-			//		for (auto i : player)
-			//			cout << i << " ";
-			//		cout << "\n  Мои фишки: ";
-			//		for (auto i : comp)
-			//			cout << i << " ";
-			//		cout << "\n\n  Я собрал у себя три фишки с суммой 15: ";
-			//		for (auto i : tempc)
-			//			cout << i << " ";
-			//		playsound("sadtrom.mp3", "geight");
-			//		cout << "\n  ";
-			//		system("pause");
-			//		flag = true;
-			//		break;
-			//	}
-			//}
 
 			if (flag)
 				break;
 
-			//if (hod)
-			//{
-			//	system("cls");
-			//	cout << comppictt;
-			//	cout << endl;
-			//	Sleep(1000);
-			//	fishka = playgttt(player, comp);
-			//	//cout << "  Я возьму фишку с номером " << fishka << "\n  ";
-			//	fishkibili.erase(fishka);
-			//	hod = false;
-			//	//system("pause");
-			//	continue;
-			//}
 			system("cls");
 			cout << endl;
 			int positions[9] = { 6, 1, 8, 7, 5, 3, 2, 9, 4 };
@@ -1278,10 +1114,6 @@ void PVP4()
 				cout << "  Поля нумеруются следующим образом:" << endl;
 				cout << polepic;
 				cout << endl;
-				//drawmatches(i);
-				// cout<< endl << endl;
-				//cout << "  ОСТАЛОСЬ СПИЧЕК (если лень считать): " << i << endl;
-				//cout << "  Игрок " << (temp ? name1 : name2) << ", Ваша очередь брать спички: 1 - взять одну, 2 - взять две, 4 - взять четыре.\n";
 				if (vibor > 0 && vibor < 10 && fishkibili.find(positionsx[vibor - 1]) == fishkibili.end())
 				{
 					cout << "  Это поле уже занято. Выберите другое.\n";
@@ -1291,23 +1123,6 @@ void PVP4()
 				str = "";
 				playsound("negative.mp3", "");
 			}
-			//while (_kbhit()) _getch();
-			//cin >> vibor;
-			//int tmp = 0;
-			//while (!cin.good() || (vibor < 1 && vibor > 9) || fishkibili.find(vibor) == fishkibili.end())
-			//{
-			//	if (vibor > 0 && vibor < 10 && fishkibili.find(vibor) == fishkibili.end())
-			//	{
-			//		cout << "Эту фишку уже взяли. Выберите другую." << endl;
-			//	}
-			//	else
-			//	{
-			//		if (tmp == 40)
-			//			exit(0);
-			//		if (tmp > 20)
-			//			cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
-			//		else if (tmp > 5)
-			//			cout << "Ну как так-то? Ты не можешь попасть по кнопке уже вот столько раз: " << tmp << endl;
 			fishkibili.erase(positionsx[vibor - 1]);
 			hod ? player.insert(positionsx[vibor - 1]) : comp.insert(positionsx[vibor - 1]);
 			cout << "  Хорошо." << endl;
@@ -1315,7 +1130,6 @@ void PVP4()
 				hod = false;
 			else
 				hod = true;
-			//Sleep(1000);
 		}
 
 		system("cls");
@@ -1336,18 +1150,14 @@ void startttt()
 	{
 		mciSendString(L"open \"audio/8.mp3\" alias geight", NULL, 0, NULL);
 		mciSendString(L"play geight repeat", NULL, 0, NULL);
-		//mciSendString(L"setaudio geight volume to 100", NULL, 0, NULL);
 	}
 	while (true)
 	{
 		system("cls");
-
-		//string temp = formnumber();
 		string text = namepictt + "\n\n\n\n  Игра \"Крестики-нолики\"\n  МЕНЮ\n\n\t1 - начать игру\n\t2 - помощь\n\t3 - в главное меню\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ";
 		cout << namepictt;
 		cout << "\n\n\n\n";
 		cout << "  Игра \"Крестики-нолики\"\n" << endl;
-		//cout << "  Игра \"Угадай число\"\n" << endl;
 		cout << "  МЕНЮ\n\n\t1 - начать игру\n\t2 - помощь\n\t3 - в главное меню\n\n";
 		int vibor = read(text, 1, 3);
 		if (vibor == 1)
@@ -1364,7 +1174,6 @@ void startttt()
 				if (vibor == 1)
 					PVI4();
 				else if (vibor == 2)
-					//PVI4();
 					PVP4();
 				else if (vibor == 3)
 					break;
@@ -1374,7 +1183,6 @@ void startttt()
 		else if (vibor == 2)
 		{
 			system("cls");
-			//string temp = formnumber();
 			cout << namepictt;
 			cout << "\n\n\n\n";
 			cout << "  Игра \"Крестики-нолики\"\n" << endl;

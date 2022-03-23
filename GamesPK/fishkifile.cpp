@@ -50,7 +50,6 @@ R"(
    /ooooooooooooooooooooooo/ /
   /C=_____________________/_/     
 )";
-//HANDLE  hConsole;
 int check(set<int>& player, set<int>& comp)
 {
 	set<int> winpos[8] =
@@ -381,11 +380,9 @@ void drawFishki(set<int>& f)
 void PVI3()
 {
 	system("cls");
-	//int count = 0;
 	int i = 25;
 	random_device rd;
 	mt19937 mersenne(rd());
-	//string temp = formnumber();
 	set<int> winpos[8] =
 	{
 		{2, 4, 9},
@@ -558,10 +555,6 @@ void PVI3()
 			drawFishki(player);
 			cout << endl;
 			cout << "  Ваша очередь брать фишку. Введите номер фишки, которую Вы хотите взять.\n";
-			//drawmatches(i);
-			// cout<< endl << endl;
-			//cout << "  ОСТАЛОСЬ СПИЧЕК (если лень считать): " << i << endl;
-			//cout << "  Игрок " << (temp ? name1 : name2) << ", Ваша очередь брать спички: 1 - взять одну, 2 - взять две, 4 - взять четыре.\n";
 			if (vibor > 0 && vibor < 10 && fishkibili.find(vibor) == fishkibili.end())
 			{
 				cout << "  Эту фишку уже взяли. Выберите другую.\n";
@@ -571,23 +564,6 @@ void PVI3()
 			str = "";
 			playsound("negative.mp3", "");
 		}
-		//while (_kbhit()) _getch();
-		//cin >> vibor;
-		//int tmp = 0;
-		//while (!cin.good() || (vibor < 1 && vibor > 9) || fishkibili.find(vibor) == fishkibili.end())
-		//{
-		//	if (vibor > 0 && vibor < 10 && fishkibili.find(vibor) == fishkibili.end())
-		//	{
-		//		cout << "Эту фишку уже взяли. Выберите другую." << endl;
-		//	}
-		//	else
-		//	{
-		//		if (tmp == 40)
-		//			exit(0);
-		//		if (tmp > 20)
-		//			cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
-		//		else if (tmp > 5)
-		//			cout << "Ну как так-то? Ты не можешь попасть по кнопке уже вот столько раз: " << tmp << endl;
 		fishkibili.erase(vibor);
 		player.insert(vibor);
 		cout << "  Хорошо." << endl;
@@ -605,7 +581,6 @@ void PVP3()
 	cout << "\n\n\n" << endl;
 	cout << "  Перед тем как начать игру, небоходимо выбрать, кто будет загадывать число.\n  Для этого вам нужно ввести ваши имена." << endl;
 	string name1, name2;
-	//Sleep(1000);
 	cout << endl << "  Первый игрок введите свое имя.\t";
 	while (_kbhit()) _getch();
 	name1 = readstr(namepicf + "\n\n\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n\n  Первый игрок введите свое имя.\t");
@@ -634,7 +609,6 @@ void PVP3()
 		};
 		set<int> fishkibili = { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, player, comp;
 		bool hod = false;
-		//int i = 25;
 		system("cls");
 		cout << namepicf;
 		cout << "\n\n\n" << endl;
@@ -781,10 +755,6 @@ void PVP3()
 				cout << endl;
 				cout << "  Игрок " << (!hod ? name1 : name2) << " Ваша очередь брать фишку.\n";
 				cout << "  Ваша очередь брать фишку. Введите номер фишки, которую Вы хотите взять.\n";
-				//drawmatches(i);
-				// cout<< endl << endl;
-				//cout << "  ОСТАЛОСЬ СПИЧЕК (если лень считать): " << i << endl;
-				//cout << "  Игрок " << (temp ? name1 : name2) << ", Ваша очередь брать спички: 1 - взять одну, 2 - взять две, 4 - взять четыре.\n";
 				if (vibor > 0 && vibor < 10 && fishkibili.find(vibor) == fishkibili.end())
 				{
 					cout << "  Эту фишку уже взяли. Выберите другую.\n";
@@ -794,23 +764,6 @@ void PVP3()
 				str = "";
 				playsound("negative.mp3", "");
 			}
-			//while (_kbhit()) _getch();
-			//cin >> vibor;
-			//int tmp = 0;
-			//while (!cin.good() || (vibor < 1 && vibor > 9) || fishkibili.find(vibor) == fishkibili.end())
-			//{
-			//	if (vibor > 0 && vibor < 10 && fishkibili.find(vibor) == fishkibili.end())
-			//	{
-			//		cout << "Эту фишку уже взяли. Выберите другую." << endl;
-			//	}
-			//	else
-			//	{
-			//		if (tmp == 40)
-			//			exit(0);
-			//		if (tmp > 20)
-			//			cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
-			//		else if (tmp > 5)
-			//			cout << "Ну как так-то? Ты не можешь попасть по кнопке уже вот столько раз: " << tmp << endl;
 			fishkibili.erase(vibor);
 			hod ? player.insert(vibor) : comp.insert(vibor);
 			cout << "  Хорошо." << endl;
@@ -818,8 +771,6 @@ void PVP3()
 				hod = false;
 			else
 				hod = true;
-			
-			//Sleep(1000);
 		}
 
 		system("cls");
@@ -839,17 +790,13 @@ void startgamefishki()
 	{
 		mciSendString(L"open \"audio/5.mp3\" alias gfive", NULL, 0, NULL);
 		mciSendString(L"play gfive repeat", NULL, 0, NULL);
-		//mciSendString(L"setaudio gfive volume to 100", NULL, 0, NULL);
 	}
 	while (true)
 	{
 		system("cls");
-
-		//string temp = formnumber();
 		string text = namepicf + "\n\n\n\n  МЕНЮ\n\n\t1 - начать игру\n\t2 - помощь\n\t3 - в главное меню\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ";
 		cout << namepicf;
 		cout << "\n\n\n\n";
-		//cout << "  Игра \"Угадай число\"\n" << endl;
 		cout << "  МЕНЮ\n\n\t1 - начать игру\n\t2 - помощь\n\t3 - в главное меню\n\n";
 		int vibor = read(text, 1, 3);
 		if (vibor == 1)
@@ -874,7 +821,6 @@ void startgamefishki()
 		else if (vibor == 2)
 		{
 			system("cls");
-			//string temp = formnumber();
 			cout << namepicf;
 			cout << "\n\n\n" << endl;
 			cout << "  ПРАВИЛА. " << endl << endl;

@@ -52,7 +52,7 @@ R"(
    /ooooooooooooooooooooooo/ /
   /C=_____________________/_/     
 )";
-//HANDLE  hConsole;
+
 void drawmatches(int count)
 {
 	SetConsoleTextAttribute(hConsole, 12);
@@ -73,11 +73,9 @@ void drawmatches(int count)
 void PVI2()
 {
 	system("cls");
-	//int count = 0;
 	int i = 25;
 	random_device rd;
 	mt19937 mersenne(rd());
-	//string temp = formnumber();
 	string text = namepic + "\n\n\n\n  ВЫБЕРИТЕ РЕЖИМ ИГРЫ\n\n\t1 - с компьютером\n\t2 - вдвоем с другом (или не другом)\n\t3 - назад\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ";
 	cout << namepic;
 	cout << "\n\n\n" << endl;
@@ -128,7 +126,6 @@ void PVI2()
 		cout << endl << endl;
 		cout << "  ОСТАЛОСЬ СПИЧЕК (если лень считать): " << i << endl;
 		cout << "  Ваша очередь брать спички: 1 - взять одну, 2 - взять две, 4 - взять четыре." << endl;
-		//cout << "\n(Введите \"выход\" чтобы выйти)\n";
 		string str = "";
 		char ch;
 		int vibor = -1;
@@ -144,10 +141,6 @@ void PVI2()
 					break;
 				str += ch;
 			}
-			/*while ((ch = _getch()) != '\n')
-			{
-				str += ch;
-			}*/
 			if (str == "выход")
 				throw MyException();
 			try
@@ -158,29 +151,18 @@ void PVI2()
 			}
 			catch (...)
 			{
-				//cout << msg;
-				//while (_kbhit()) _getch();
 			}
 			system("cls");
 			if (tmp == 40)
 			{
-				//fpr
 				mciSendString(L"stop all", NULL, 0, NULL);
 				mciSendString(L"play \"audio/tnt.mp3\" wait", NULL, 0, NULL);
-				//Sleep(6500);
 				exit(0);
 			}
 			if (tmp > 20)
 				cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
 			else if (tmp > 5)
 				cout << "Ну как так-то? Вы не можете попасть по кнопке уже вот столько раз: " << tmp << endl;
-			//cout << msg;
-			
-		//	//while (_kbhit()) _getch();
-		//	tmp++;
-		//	str = "";
-		//}
-			//cout << msg;
 			drawmatches(i);
 			cout << endl << endl;
 			cout << "  ОСТАЛОСЬ СПИЧЕК (если лень считать): " << i << endl;
@@ -200,44 +182,12 @@ void PVI2()
 			playsound("negative.mp3", "");
 		}
 
-
-		//vibor = read("  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ", 1, 4)
-		//while (_kbhit()) _getch();
-		//cin >> vibor;
-		//int tmp = 0;
-		//while (!cin.good() || (vibor != 1 && vibor != 2 && vibor != 4) || (vibor == 4 && i < 4) || (vibor == 2 && i < 2))
-		//{
-		//	if (vibor == 4 && i < 4)
-		//	{
-		//		cout << "Нельзя взять 4 спички, если есть всего " << i << ". Подумай об этом.\n  ";
-		//	}
-		//	else if (vibor == 2 && i < 2)
-		//	{
-		//		cout << "Нельзя взять 2 спички, если есть всего " << i << ". Подумай об этом.\n  ";
-		//	}
-		//	else
-		//	{
-		//		if (tmp == 40)
-		//			exit(0);
-		//		if (tmp > 20)
-		//			cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
-		//		else if (tmp > 5)
-		//			cout << "Ну как так-то? Ты не можешь попасть по кнопке уже вот столько раз: " << tmp << endl;
-
-		//		cin.clear();
-		//		cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-		//		cout << "ПОВТОРЯЮ, ВВЕДИ: 1 - взять одну, 2 - взять две, 4 - взять четыре." << endl;
-		//	}
-		//	cin >> vibor;
-		//	tmp++;
-		//}
 		i -= vibor;
 		if (i <= 0)
 		{
 			cout << "  ПОЗДРАВЛЯЮ. ВЫ ПОБЕДИЛ. РАДУЙТЕСЬ. ВЕСЕЛИТЕСЬ.\n  ";
 			playsound("win.mp3", "gthree");
 			system("pause");
-			//Sleep(4000);
 			return;
 		}
 		cout << "  Хорошо." << endl;
@@ -314,7 +264,6 @@ void PVI2()
 			cout << "  ВЫ ПРОИГРАЛИ!\n  ";
 			playsound("sadtrom.mp3", "gthree");
 			system("pause");
-			//Sleep(4000);
 			return;
 		}
 	}
@@ -330,7 +279,6 @@ void PVP2()
 	cout << "\n\n\n" << endl;
 	cout << "  Перед тем как начать игру, небоходимо выбрать, кто будет загадывать число.\n  Для этого вам нужно ввести ваши имена." << endl;
 	string name1, name2;
-	//Sleep(1000);
 	cout << endl << "  Первый игрок введите свое имя.\t";
 	while (_kbhit()) _getch();
 	name1 = readstr(namepic + "\n\n\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n\n  Первый игрок введите свое имя.\t");
@@ -367,7 +315,6 @@ void PVP2()
 			cout << endl << endl;
 			cout << "  ОСТАЛОСЬ СПИЧЕК (если лень считать): " << i << endl;
 			cout << "  Игрок " << (temp ? name1 : name2) << ", Ваша очередь брать спички: 1 - взять одну, 2 - взять две, 4 - взять четыре." << endl;
-			//cout << "\n(Введите \"выход\" чтобы выйти)\n";
 			string str = "";
 			char ch;
 			int vibor = -1;
@@ -456,17 +403,13 @@ void startgamemathes()
 	{
 		mciSendString(L"open \"audio/3.mp3\" alias gthree", NULL, 0, NULL);
 		mciSendString(L"play gthree repeat", NULL, 0, NULL);
-		//mciSendString(L"setaudio gthree volume to 100", NULL, 0, NULL);
 	}
 	while (true)
 	{
 		system("cls");
-
-		//string temp = formnumber();
 		string text = namepic + "\n\n\n\n  МЕНЮ\n\n\t1 - начать игру\n\t2 - помощь\n\t3 - в главное меню\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ";
 		cout << namepic;
 		cout << "\n\n\n\n";
-		//cout << "  Игра \"Угадай число\"\n" << endl;
 		cout << "  МЕНЮ\n\n\t1 - начать игру\n\t2 - помощь\n\t3 - в главное меню\n\n";
 		int vibor = read(text, 1, 3);
 		if (vibor == 1)
@@ -491,7 +434,6 @@ void startgamemathes()
 		else if (vibor == 2)
 		{
 			system("cls");
-			//string temp = formnumber();
 			cout << namepic;
 			cout << "\n\n\n" << endl;
 			cout << "  ПРАВИЛА. " << endl << endl;

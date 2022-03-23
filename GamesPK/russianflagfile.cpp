@@ -495,16 +495,12 @@ void playgame()
 		}
 		catch (...)
 		{
-			//cout << msg;
-			//while (_kbhit()) _getch();
 		}
 		system("cls");
 		if (tmp == 40)
 		{
-			//fpr
 			mciSendString(L"stop all", NULL, 0, NULL);
 			mciSendString(L"play \"audio/tnt.mp3\" wait", NULL, 0, NULL);
-			//Sleep(6500);
 			exit(0);
 		}
 		if (tmp > 20)
@@ -517,30 +513,10 @@ void playgame()
 		cout << "  Введите количество лунок. Количество лунок должно быть кратным трем и должно быть БОЛЬШЕ 0 и НЕ БОЛЬШЕ 99\n";
 		cout << "  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ";
 		playsound("negative.mp3", "");
-		//while (_kbhit()) _getch();
 		tmp++;
 		str = "";
 	}
-	//while (_kbhit()) _getch();
 	int yroven;
-	//int vibor;
-	//cin >> vibor;
-	/*int tmp = 0;
-	while (!cin.good() || vibor < 1 || vibor > 99 || vibor % 3 != 0)
-	{
-		if (tmp == 40)
-			exit(0);
-		if (tmp > 20)
-			cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
-		else if (tmp > 5)
-			cout << "Ну как так-то? Ты не можешь попасть по кнопке уже вот столько раз: " << tmp << endl;
-
-		cin.clear();
-		cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-		cout << "Ошибка ввода. Введите количество лунок. Количество лунок должно быть кратным трем и должно быть БОЛЬШЕ 0 и НЕ БОЛЬШЕ 99." << endl;
-		cin >> vibor;
-		tmp++;
-	}*/
 	vector<int>lunki;
 	int countb[3] = { 0, 0, 0 };
 	for (int i = 0; i < vibor; i++)
@@ -584,16 +560,12 @@ void playgame()
 		}
 		catch (...)
 		{
-			//cout << msg;
-			//while (_kbhit()) _getch();
 		}
 		system("cls");
 		if (tmp == 40)
 		{
-			//fpr
 			mciSendString(L"stop all", NULL, 0, NULL);
 			mciSendString(L"play \"audio/tnt.mp3\" wait", NULL, 0, NULL);
-			//Sleep(6500);
 			exit(0);
 		}
 		if (tmp > 20)
@@ -606,27 +578,9 @@ void playgame()
 		cout << "  Выберите уровень сложности:\n\t1 - легкий\n\t2 - средний\n\t3 - сложный.\n";
 		cout << "  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ";
 		playsound("negative.mp3", "");
-		//while (_kbhit()) _getch();
 		tmp++;
 		str = "";
 	}
-	//cin >> yroven;
-	//tmp = 0;
-	///*while (!cin.good() || yroven < 1 || yroven > 3)
-	//{
-	//	if (tmp == 40)
-	//		exit(0);
-	//	if (tmp > 20)
-	//		cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
-	//	else if (tmp > 5)
-	//		cout << "Ну как так-то? Ты не можешь попасть по кнопке уже вот столько раз: " << tmp << endl;
-
-	//	cin.clear();
-	//	cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-	//	cout << "Ошибка ввода. Выберите уровень сложности : 1 - легкий, 2 - средний, 3 - сложный." << endl;
-	//	cin >> yroven;
-	//	tmp++;
-	//}*/
 	if (minim(lunki) == 0)
 	{
 		system("cls");
@@ -676,24 +630,18 @@ void playgame()
 				catch (...)
 				{
 					pos1 = -1;
-					//cout << msg;
-					//while (_kbhit()) _getch();
 				}
 				system("cls");
 				if (tmp == 40)
 				{
-					//fpr
 					mciSendString(L"stop all", NULL, 0, NULL);
 					mciSendString(L"play \"audio/tnt.mp3\" wait", NULL, 0, NULL);
-					//Sleep(6500);
 					exit(0);
 				}
 				if (tmp > 20)
 					cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
 				else if (tmp > 5)
 					cout << "Ну как так-то? Вы не можете попасть по кнопке уже вот столько раз: " << tmp << endl;
-				//drawlogo();
-				//system("cls");
 				cout << "\n  Осталось ходов: " << hodi << "." << endl;
 				cout << endl;
 				drawlunki(lunki);
@@ -701,26 +649,9 @@ void playgame()
 				cout << "  Введите позицию первого шарика, который вы хотите положить на другое место.\n";
 				cout << "  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ";
 				playsound("negative.mp3", "");
-				//while (_kbhit()) _getch();
 				tmp++;
 				str = "";
 			}
-			//cin >> pos1;
-			//int tmp = 0;
-			//while (!cin.good() || pos1 < 1 || pos1 > lunki.size())
-			//{
-			//	if (tmp == 40)
-			//		exit(0);
-			//	if (tmp > 20)
-			//		cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
-			//	else if (tmp > 5)
-			//		cout << "Ну как так-то? Ты не можешь попасть по кнопке уже вот столько раз: " << tmp << endl;
-			//	cin.clear();
-			//	cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-			//	cout << "Ошибка ввода. Введите позицию первого шарика, который вы хотите положить на другое место." << endl;
-			//	cin >> pos1;
-			//	tmp++;
-			//}
 			system("cls");
 			cout << "\n  Осталось ходов: " << hodi << "." << endl;
 			cout << endl;
@@ -749,24 +680,18 @@ void playgame()
 				catch (...)
 				{
 					pos2 = -1;
-					//cout << msg;
-					//while (_kbhit()) _getch();
 				}
 				system("cls");
 				if (tmp == 40)
 				{
-					//fpr
 					mciSendString(L"stop all", NULL, 0, NULL);
 					mciSendString(L"play \"audio/tnt.mp3\" wait", NULL, 0, NULL);
-					//Sleep(6500);
 					exit(0);
 				}
 				if (tmp > 20)
 					cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
 				else if (tmp > 5)
 					cout << "Ну как так-то? Вы не можете попасть по кнопке уже вот столько раз: " << tmp << endl;
-				//drawlogo();
-				//system("cls");
 				cout << "\n  Осталось ходов: " << hodi << "." << endl;
 				cout << endl;
 				drawlunki(lunki, pos1 - 1);
@@ -776,30 +701,9 @@ void playgame()
 					cout << "  Позиция первого и второго шариков совпадают. Так нельзя.\n";
 				cout << "  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ";
 				playsound("negative.mp3", "");
-				//while (_kbhit()) _getch();
 				tmp++;
 				str = "";
 			}
-			
-			/*cin >> pos2;
-			tmp = 0;
-			while (!cin.good() || pos2 < 1 || pos2 > lunki.size() || pos1 == pos2)
-			{
-				if (pos1 == pos2)
-					cout << "Позиция первого и второго шариков совпадают. Так нельзя." << endl;
-				if (tmp == 40)
-					exit(0);
-				if (tmp > 20)
-					cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
-				else if (tmp > 5)
-					cout << "Ну как так-то? Ты не можешь попасть по кнопке уже вот столько раз: " << tmp << endl;
-
-				cin.clear();
-				cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-				cout << "Ошибка ввода. Введите позицию второго шарика, который вы хотите положить на место первого." << endl;
-				cin >> pos2;
-				tmp++;
-			}*/
 			swap(lunki[pos1 - 1], lunki[pos2 - 1]);
 			hodi--;
 		}
@@ -847,24 +751,18 @@ void playgame()
 				catch (...)
 				{
 					vibor = -1;
-					//cout << msg;
-					//while (_kbhit()) _getch();
 				}
 				system("cls");
 				if (tmp == 40)
 				{
-					//fpr
 					mciSendString(L"stop all", NULL, 0, NULL);
 					mciSendString(L"play \"audio/tnt.mp3\" wait", NULL, 0, NULL);
-					//Sleep(6500);
 					exit(0);
 				}
 				if (tmp > 20)
 					cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
 				else if (tmp > 5)
 					cout << "Ну как так-то? Вы не можете попасть по кнопке уже вот столько раз: " << tmp << endl;
-				//drawlogo();
-				//system("cls");
 				cout << "\n  Осталось ходов: " << hodi << "." << endl;
 				cout << endl;
 				drawlunki(lunki);
@@ -873,27 +771,9 @@ void playgame()
 				cout << "  Если Вы ходите увидеть как играет профессионал ввдите 1, если не хотите введите 2.\n";
 				cout << "  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ";				
 				playsound("negative.mp3", "");
-				//while (_kbhit()) _getch();
 				tmp++;
 				str = "";
 			}
-			//cin >> vibor;
-			//tmp = 0;
-			//while (!cin.good() || vibor < 1 || vibor > 2)
-			//{
-			//	if (tmp == 40)
-			//		exit(0);
-			//	if (tmp > 20)
-			//		cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
-			//	else if (tmp > 5)
-			//		cout << "Ну как так-то? Ты не можешь попасть по кнопке уже вот столько раз: " << tmp << endl;
-
-			//	cin.clear();
-			//	cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-			//	cout << "Ошибка ввода. Если Вы ходите увдеть как играет профессионал ввдите 1, если не хотите введите 2." << endl;
-			//	cin >> vibor;
-			//	tmp++;
-			//}
 			if (vibor == 1)
 				minimtoshow(lunkitoshow);
 		}
@@ -910,7 +790,6 @@ void startrf()
 	{
 		mciSendString(L"open \"audio/7.mp3\" alias gseven", NULL, 0, NULL);
 		mciSendString(L"play gseven repeat", NULL, 0, NULL);
-		//mciSendString(L"setaudio gthree volume to 100", NULL, 0, NULL);
 	}
 	while (true)
 	{
@@ -944,16 +823,12 @@ void startrf()
 			}
 			catch (...)
 			{
-				//cout << msg;
-				//while (_kbhit()) _getch();
 			}
 			system("cls");
 			if (tmp == 40)
 			{
-				//fpr
 				mciSendString(L"stop all", NULL, 0, NULL);
 				mciSendString(L"play \"audio/tnt.mp3\" wait", NULL, 0, NULL);
-				//Sleep(6500);
 				exit(0);
 			}
 			if (tmp > 20)
@@ -966,7 +841,6 @@ void startrf()
 			cout << "  МЕНЮ\n\n\t1 - начать игру\n\t2 - помощь\n\t3 - в главное меню\n\n";
 			cout << "  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ";
 			playsound("negative.mp3", "");
-			//while (_kbhit()) _getch();
 			tmp++;
 			str = "";
 		}
@@ -975,7 +849,6 @@ void startrf()
 		else if (vibor == 2)
 		{
 			system("cls");
-			//string temp = formnumber();
 			drawlogo();
 			cout << "\n\n\n";
 			cout << "  Игра \"Российский флаг\"\n\n";

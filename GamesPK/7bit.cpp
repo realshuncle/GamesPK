@@ -12,40 +12,11 @@ string shifr(bool flag, string num = "НЕТ ДАННЫХ")
 	ofstream out;
 	string text = "";
 	char chr;
-	//in.open("config");
-	//out.open("config", ios::binary);
+
 	if (flag)
 		in.open("config", ios::binary);
 	else
 		out.open("config", ios::binary);
-
-	//if (in.is_open())
-	//{
-		//while (in)
-		//{
-		//	in.get(chr);
-		//	text = text + chr;
-		//}
-
-		//text = text.substr(0, text.length() - 1);
-		// flag;
-		//int vib;
-		//cout << "Введите: 1 - зашифровать; 2, - расшифровать" << endl;
-		//cin >> vib;
-		/*switch (vib)
-		{
-		case 1:
-			flag = 0;
-			break;
-		case 2:
-			flag = 1;
-			break;
-		default:
-			cout << "Неизвестная команда." << endl;
-			system("pause");
-			return 1;
-			break;
-		}*/
 
 	if (!flag)
 	{
@@ -91,9 +62,6 @@ string shifr(bool flag, string num = "НЕТ ДАННЫХ")
 			text = text.substr(0, text.length() - 1);
 			if (text.length() % 7 != 0)
 			{
-				//return 1;
-				//cout << "Не возможно расшифровать файл." << endl;
-				//system("pause");
 				return "НЕТ_ДАННЫХ";
 			}
 			for (int i = 0; i < text.length(); i += 7)
@@ -113,7 +81,6 @@ string shifr(bool flag, string num = "НЕТ ДАННЫХ")
 					unsigned char symbol = unsigned char(temp[j] >> (j + 1)) << 1 | (j != 0 ? temp[j - 1] << (8 - j) : 0) | (sevenbit >> 6);
 					sevenbit = unsigned char(sevenbit << 2) >> 1;
 					result += symbol;
-					//out.write((char*)&symbol, sizeof(symbol));
 				}
 			}
 		}

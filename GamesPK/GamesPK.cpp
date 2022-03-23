@@ -14,20 +14,6 @@
 
 using namespace std;
 
-//string musicname[11] =
-//{
-//    "0",
-//    "1",
-//    "2",
-//    "3",
-//    "4",
-//    "5",
-//    "6",
-//    "7",
-//    "8",
-//    "9",
-//    "logo"
-//};
 HANDLE hConsole;
 bool music = true;
 bool sounds = true;
@@ -92,13 +78,6 @@ R"(
                                 ,,;;:::cccccccc:::;;;,                     
                                          ,,,,                        
 )";
-//R"(
-//      
-//        ____  ___    _   __   __ __ ___    ____  ___   _____ ________  __  ________
-//       / __ \/   |  / | / /  / //_//   |  / __ \/   | / ___//  _/ __ \/ / / / ____/
-//      / /_/ / /| | /  |/ /  / ,<  / /| | / /_/ / /| | \__ \ / // / / / / / / __/   
-//     / ____/ ___ |/ /|  /  / /| |/ ___ |/ _, _/ ___ |___/ // // /_/ / /_/ / /___   
-//    /_/   /_/  |_/_/ |_/  /_/ |_/_/  |_/_/ |_/_/  |_/____/___/\___\_\____/_____/   )"
 const char* gamename[12] =
 {
     R"(
@@ -201,20 +180,7 @@ void startgamehangman();
 void startdices();
 void startgamefishki();
 void startrf();
-//void playmusic()
-//{
-//    mciSendString(L"open \"audio/igravto.mp3\" alias MY_SND1", NULL, 0, NULL);
-//    //mciSendString(L"play MY_SND1 repeat", NULL, 0, NULL);
-//    for (int i = 0; i < 100; i++)
-//    {
-//        
-//        //cout << "A";
-//        mciSendString(L"play MY_SND1 repeat", NULL, 0, NULL);
-//        Sleep(1000);
-//        mciSendString(L"pause MY_SND1", NULL, 0, NULL);
-//        Sleep(1000);
-//    }
-//}
+
 void playsound(string soundname, string musicalias)
 {
     wstring s = wstring(soundname.begin(), soundname.end());
@@ -228,10 +194,8 @@ void playsound(string soundname, string musicalias)
         if (music)
             mciSendString((L"setaudio " + m + L" volume to 10").c_str(), NULL, 0, NULL);
         mciSendString(L"setaudio st volume to 1000", NULL, 0, NULL);
-        //mciSendString(L"set st Speed 1500", NULL, 0, NULL);
         mciSendString(L"play st from 0 wait", NULL, 0, NULL);
         mciSendString(L"close st", NULL, 0, NULL);
-        //mciSendString(L"play \"audio/sadtrom.mp3\" wait", NULL, 0, NULL);
         if (music)
             mciSendString((L"setaudio " + m + L" volume to 1000").c_str(), NULL, 0, NULL);
         while (_kbhit()) _getch();
@@ -248,7 +212,6 @@ int read(string msg, int b, int e)
     while (_kbhit()) _getch();
     while (true)
     {
-        /*SetConsoleTextAttribute(hConsole, 8);cout << "\n  (Если Вы хотите выйти из игры введите \"выход\")\n  ";SetConsoleTextAttribute(hConsole, 14);*/
         SetConsoleTextAttribute(hConsole, 8);cout << "\n  (Если Вы хотите выйти из игры введите \"выход\")\n  ";SetConsoleTextAttribute(hConsole, 14);
         while (cin.get(ch))
         {
@@ -256,10 +219,6 @@ int read(string msg, int b, int e)
                 break;
             str += ch;
         }
-        /*while ((ch = _getch()) != '\n')
-        {
-            str += ch;
-        }*/
         if (str == "выход")
             throw MyException();
         try
@@ -270,26 +229,20 @@ int read(string msg, int b, int e)
         }
         catch (...)
         {
-            //cout << msg;
-            //while (_kbhit()) _getch();
         }
         system("cls");
         if (tmp == 40)
         {
-            //fpr
             mciSendString(L"stop all", NULL, 0, NULL);
             mciSendString(L"play \"audio/tnt.mp3\" wait", NULL, 0, NULL);
-            //Sleep(6500);
             exit(0);
         }
         if (tmp > 20)
             cout << "Это не кликкер! До перегрева: " << 40 - tmp << endl;
         else if (tmp > 5)
             cout << "Ну как так-то? Вы не можете попасть по кнопке уже вот столько раз: " << tmp << endl;
-        //SetConsoleTextAttribute(hConsole, 8);cout << "\n  (Если Вы хотите выйти из игры введите \"выход\")\n  ";SetConsoleTextAttribute(hConsole, 14);
         cout << msg;
         playsound("negative.mp3", "");
-        //while (_kbhit()) _getch();
         tmp++;
         str = "";
     }
@@ -298,7 +251,6 @@ string readstr(string msg)
 {
     string str = "";
     char ch;
-    //int vibor;
     int tmp = 0;
     cout << "  ";
     while (_kbhit()) _getch();
@@ -311,29 +263,13 @@ string readstr(string msg)
                 break;
             str += ch;
         }
-        /*while ((ch = _getch()) != '\n')
-        {
-            str += ch;
-        }*/
         if (str.length() != 0)
             return str;
-        //try
-        //{
-        //    //vibor = stoi(st);
-        //   
-        //}
-        //catch (...)
-        //{
-        //    //cout << msg;
-        //    //while (_kbhit()) _getch();
-        //}
         system("cls");
         if (tmp == 40)
         {
-            //fpr
             mciSendString(L"stop all", NULL, 0, NULL);
             mciSendString(L"play \"audio/tnt.mp3\" wait", NULL, 0, NULL);
-            //Sleep(6500);
             exit(0);
         }
         if (tmp > 20)
@@ -342,7 +278,6 @@ string readstr(string msg)
             cout << "Ну как так-то? Вы не можете попасть по кнопке уже вот столько раз: " << tmp << endl;
         cout << msg;
         playsound("negative.mp3", "");
-        //while (_kbhit()) _getch();
         tmp++;
         str = "";
     }
@@ -351,17 +286,14 @@ void selectgame()
 {
     while (true)
     {
-        //cout << endl;
         system("cls");
         cout << menuh;
         cout << "\n\n\n\n";
         cout << "  ВЫБЕРИТЕ ИГРУ\n\n\t1 - \"Угадай число\"\n\t2 - \"Виселица\"\n\t3 - \"Спички\"\n\t4 - \"Кости\"\n\t5 - \"Фишки\"\n\t6 - \"Российский флаг\"\n\t7 - \"Крестики-нолики\"\n\n\t0 - назад\n";
         string text = "\n\n\n\n  ВЫБЕРИТЕ ИГРУ\n\n\t1 - \"Угадай число\"\n\t2 - \"Виселица\"\n\t3 - \"Спички\"\n\t4 - \"Кости\"\n\t5 - \"Фишки\"\n\t6 - \"Российский флаг\"\n\t7 - \"Крестики-нолики\"\n\n\t0 - назад\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ";
-        //cout << text;
         int vibor;
         
         char result[300];
-        //strcpy()
         try
         {
             vibor = read(menuh + text, 0, 8);
@@ -378,12 +310,10 @@ void selectgame()
             try
             {
                 startgameygchislo();
-                //vibor = read(menuh + text, 0, 8);
             }
             catch (...)
             {
                 mciSendString(L"close gone", NULL, 0, NULL);
-                //break;
             }          
             system("cls");
             if (music)
@@ -395,12 +325,10 @@ void selectgame()
             try
             {
                 startgamehangman();
-                //vibor = read(menuh + text, 0, 8);
             }
             catch (...)
             {
                 mciSendString(L"close gtwo", NULL, 0, NULL);
-                //break;
             }
             system("cls");
             if (music)
@@ -412,12 +340,10 @@ void selectgame()
             try
             {
                 startgamemathes();
-                //vibor = read(menuh + text, 0, 8);
             }
             catch (...)
             {
                 mciSendString(L"close gthree", NULL, 0, NULL);
-                //break;
             }
             
             system("cls");
@@ -430,12 +356,10 @@ void selectgame()
             try
             {
                 startdices();
-                //vibor = read(menuh + text, 0, 8);
             }
             catch (...)
             {
                 mciSendString(L"close gfour", NULL, 0, NULL);
-                //break;
             }
 
             system("cls");
@@ -448,12 +372,10 @@ void selectgame()
             try
             {
                 startgamefishki();
-                //vibor = read(menuh + text, 0, 8);
             }
             catch (...)
             {
                 mciSendString(L"close gfive", NULL, 0, NULL);
-                //break;
             }
 
             system("cls");
@@ -466,14 +388,11 @@ void selectgame()
             try
             {
                 startrf();
-                //vibor = read(menuh + text, 0, 8);
             }
             catch (...)
             {
                 mciSendString(L"close gseven", NULL, 0, NULL);
-                //break;
             }
-
             system("cls");
             if (music)
                 mciSendString(L"play menumusic from 0 repeat", NULL, 0, NULL);
@@ -484,12 +403,10 @@ void selectgame()
         try
         {
             startttt();
-            //vibor = read(menuh + text, 0, 8);
         }
         catch (...)
         {
             mciSendString(L"close geight", NULL, 0, NULL);
-            //break;
         }
 
         system("cls");
@@ -511,22 +428,8 @@ void main()
     setlocale(LC_ALL, "Russian");
     SetConsoleTextAttribute(hConsole, 14);
     HWND hwnd;
-/*    LPWSTR Title = nullptr;
-    GetConsoleTitle(Title, 1024);*/ // Узнаем имя окна
-    hwnd = GetConsoleWindow(); // Узнаем hwnd окна
-    MoveWindow(hwnd, 200, 50, 900, 650, TRUE);//xnew,ynew,wnew,hnew -новые положение x,y, ширина и высота
-    //system("mode con lines=900 cols=650");
-    //_getch();
-    //COORD crd = { 1000, 1000 };
-    //SMALL_RECT src = { 0, 0, crd.X, crd.Y };
-    //SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE), crd);
-    //SetConsoleWindowInfo(GetStdHandle(STD_OUTPUT_HANDLE), TRUE, &src);
-
-    //COORD bufferSize = { 80, 50 };
-    //SetConsoleScreenBufferSize(hConsole, bufferSize);
-    //startgamefishki();
-    //startdices();
-    //startgamehangman();
+    hwnd = GetConsoleWindow();
+    MoveWindow(hwnd, 200, 50, 900, 650, TRUE);
     mciSendString(L"play \"audio/logo.mp3\"", NULL, 0, NULL);
     for (int i = 0; i < 12; i++)
     {
@@ -544,15 +447,11 @@ void main()
         Sleep(250);
     }
     Sleep(5000);
-    //startgamemathes();
     system("cls");
-    //int k = MCIERR_WAVE_SETOUTPUTUNSUITABLE;
     mciSendString(L"open \"audio/0.mp3\" alias menumusic", NULL, 0, NULL);
     mciSendString(L"play menumusic repeat", NULL, 0, NULL);
     while (true)
     {
-       
-        //cout << endl;
         system("cls");
         string text = menuh + "\n\n\n\n  МЕНЮ\n\n\t1 - выбрать игру\n\t2 - открыть настройки\n\t3 - информация о программе\n\t4 - выйти из программы\n\n  Похоже вы ввели что-то не то. Попробуйте еще разок.\n  ";
         cout << menuh;
@@ -575,34 +474,6 @@ void main()
         }
         else if (vibor == 2)
         {
-            //while (true)
-            //{
-            //    system("cls");
-            //    cout << "  НАСТРОЙКИ. " << endl << endl;
-            //    cout << "\tМузыка: " << (music ? "ВКЛЮЧЕНА" : "ВЫКЛЮЧЕНА") << endl;
-            //    cout << "\tЗвуковые эффекты: " << (sounds ? "ВКЛЮЧЕНЫ" : "ВЫКЛЮЧЕНЫ") << endl << endl;
-            //    cout << "  ВВЕДИТЕ\n\n\t1 - включить/выключить музыку\n\t2 - включить/выключить звуковые эффекты\n\t3 - назад в меню\n";
-            //    vibor = read("Не правильно! Введите правильную команду! Введите команду : 1 - включить/выключить музыку, 2 - назад в меню", 1, 3);
-            //    if (vibor == 1)
-            //    {
-            //        music = !music;
-            //        //system("cls");
-            //    }
-            //    else if (vibor == 2)
-            //    {
-            //        sounds = !sounds;
-            //        //system("cls");
-            //    }
-            //    else if (vibor == 3)
-            //    {
-            //        if (!music)
-            //            mciSendString(L"pause menumusic", NULL, 0, NULL);
-            //        else
-            //            mciSendString(L"play menumusic repeat", NULL, 0, NULL);
-            //        break;
-            //    }
-            //        //system("pause");
-            //}
             bool temmp = music;
             while (true)
             {
@@ -627,12 +498,10 @@ void main()
                 if (vibor == 1)
                 {
                     music = !music;
-                    //system("cls");
                 }
                 else if (vibor == 2)
                 {
                     sounds = !sounds;
-                    //system("cls");
                 }
                 else if (vibor == 3)
                 {
@@ -642,9 +511,7 @@ void main()
                         mciSendString(L"play menumusic from 0 repeat", NULL, 0, NULL);
                     break;
                 }
-                //system("pause");
             }
-            //mciSendString(L"resume MY_SND", NULL, 0, NULL);
         }
 
         else if (vibor == 3)
@@ -656,7 +523,6 @@ void main()
             cout << "\n\tПо всем вопросам, а также при обнаружении ошибок, убедительная просьба обращаться по указаному e-mail адресу." << endl << endl;
             cout << "\te-mail для связи: semp21@mail.ru\n\n  ";
             system("pause");
-            //mciSendString(L"resume MY_SND", NULL, 0, NULL);
         }
         else if (vibor == 4)
             break;
